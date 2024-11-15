@@ -1,19 +1,19 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #f4f4f9;
+    background-color: #E0E3E1; 
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    color: #333;
+    color: #37332E; 
 }
 
 h1 {
     text-align: center;
     padding: 20px;
-    background-color: #0078d7;
-    color: white;
+    background-color: #7A756E; 
+    color: #E0E3E1; 
     margin: 0;
-    font-size: 24px; /* Fixed font size */
+    font-size: 24px;
 }
 
 .container {
@@ -23,8 +23,8 @@ h1 {
 }
 
 .repo-section {
-    background: white;
-    border: 1px solid #ddd;
+    background: #B6AE97; 
+    border: 1px solid #7A756E; 
     border-radius: 8px;
     margin-bottom: 20px;
     padding: 15px 20px;
@@ -32,9 +32,9 @@ h1 {
 }
 
 .repo-title {
-    font-size: 20px; /* Fixed font size */
+    font-size: 20px;
     font-weight: bold;
-    color: #0078d7;
+    color: #37332E; 
     margin-bottom: 10px;
 }
 
@@ -48,14 +48,16 @@ h1 {
 .badges img {
     max-height: 40px;
     flex: 1 1 auto;
+    background-color: #78F7F2; 
+    border-radius: 4px;
 }
 
 footer {
     text-align: center;
     padding: 10px 0;
-    background-color: #f4f4f9;
-    color: #666;
-    font-size: 14px; /* Fixed font size */
+    background-color: #37332E; 
+    color: #E0E3E1; 
+    font-size: 14px;
 }
 
 /* Media Queries for Layout Adjustments */
@@ -78,3 +80,4 @@ footer {
         max-width: 200px;
     }
 }
+
