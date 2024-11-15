@@ -47,14 +47,5 @@
     </div>
 </div>
 
-<script>
-    // Auto-refresh badges every 5 minutes
-    setInterval(() => {
-      document.querySelectorAll('img').forEach((img) => {
-        img.src = img.src.split('?')[0] + '?' + new Date().getTime();
-      });
-    }, 300000);
-</script>
-
 </body>
 </html>
