@@ -1,10 +1,33 @@
+/* General Page Styling */
 body {
     font-family: Arial, sans-serif;
-    background-color: #E0E3E1; 
+    background-color: #E0E3E1; /* Light Gray */
     margin: 0;
     padding: 0;
     line-height: 1.6;
-    color: #37332E; 
+    color: #37332E; /* Dark Gray */
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensures body takes the full height of the viewport */
+}
+
+.container {
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 0 20px;
+    flex: 1; /* Pushes the footer to the bottom if content is short */
+}
+
+/* Footer Styling */
+footer {
+    text-align: center;
+    padding: 10px 0;
+    background-color: #37332E; /* Dark Gray */
+    color: #E0E3E1; /* Light Gray */
+    font-size: 14px;
+    position: relative;
+    bottom: 0;
+    width: 100%;
 }
 
 h1 {
@@ -16,11 +39,7 @@ h1 {
     font-size: 24px;
 }
 
-.container {
-    max-width: 900px;
-    margin: 20px auto;
-    padding: 0 20px;
-}
+
 
 .repo-section {
     background: #B6AE97; 
@@ -50,15 +69,6 @@ h1 {
     width: auto; /* Prevent horizontal stretching */
     object-fit: contain; /* Ensure the image fits within the given height */
     flex-shrink: 0; /* Prevent the image from shrinking in flex containers */
-}
-
-
-footer {
-    text-align: center;
-    padding: 10px 0;
-    background-color: #37332E; 
-    color: #E0E3E1; 
-    font-size: 14px;
 }
 
 /* Media Queries for Layout Adjustments */
