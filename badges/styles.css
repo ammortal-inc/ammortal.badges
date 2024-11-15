@@ -89,6 +89,11 @@ h1 img {
     border-bottom: none;
 }
 
+.repo-table td:last-child img {
+    background-color: #E7671A;
+    max-width: 1200%; 
+}
+
 .repo-table img {
     max-width: 100%; 
     max-height: 40px;
