@@ -13,7 +13,7 @@ h1 {
     background-color: #0078d7;
     color: white;
     margin: 0;
-    font-size: 1.8em;
+    font-size: 24px; /* Fixed font size */
 }
 
 .container {
@@ -32,7 +32,7 @@ h1 {
 }
 
 .repo-title {
-    font-size: 1.5em;
+    font-size: 20px; /* Fixed font size */
     font-weight: bold;
     color: #0078d7;
     margin-bottom: 10px;
@@ -55,39 +55,17 @@ footer {
     padding: 10px 0;
     background-color: #f4f4f9;
     color: #666;
-    font-size: 0.9em;
+    font-size: 14px; /* Fixed font size */
 }
 
-/* Media Queries for Responsiveness */
+/* Media Queries for Layout Adjustments */
 @media (max-width: 768px) {
-    h1 {
-        font-size: 1.5em;
-        padding: 15px;
-    }
-
-    .repo-section {
-        padding: 10px 15px;
-    }
-
-    .repo-title {
-        font-size: 1.3em;
-    }
-
     .badges img {
         max-height: 35px;
     }
 }
 
 @media (max-width: 480px) {
-    h1 {
-        font-size: 1.2em;
-        padding: 10px;
-    }
-
-    .repo-title {
-        font-size: 1.2em;
-    }
-
     .badges {
         gap: 10px;
         flex-direction: column;
