@@ -1,6 +1,8 @@
 /* General Page Styling */
+@import url('https://fonts.googleapis.com/css2?family=Assistant:wght@300;400;600&family=Montserrat:wght@400;600;800&family=Roboto+Mono:wght@400;700&display=swap');
+
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Assistant', Arial, sans-serif;
     background-color: #E0E3E1; /* Light Gray */
     margin: 0;
     padding: 0;
@@ -20,6 +22,7 @@ body {
 
 /* Footer Styling */
 footer {
+    font-family: 'Roboto Mono', monospace;
     text-align: center;
     padding: 10px 0;
     background-color: #37332E; /* Dark Gray */
@@ -31,12 +34,14 @@ footer {
 }
 
 h1 {
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-size: 2rem;
+    font-weight: 800;
     text-align: center;
     padding: 20px;
     background-color: #7A756E; 
     color: #E0E3E1; 
     margin: 0;
-    font-size: 24px;
 }
 
 
@@ -51,8 +56,9 @@ h1 {
 }
 
 .repo-title {
-    font-size: 20px;
-    font-weight: bold;
+    font-family: 'Montserrat', Arial, sans-serif;
+    font-weight: 600;
+    font-size: 1.25rem;
     color: #37332E; 
     margin-bottom: 10px;
 }
@@ -73,6 +79,14 @@ h1 {
 
 /* Media Queries for Layout Adjustments */
 @media (max-width: 768px) {
+    h1 {
+        font-size: 1.75rem;
+    }
+
+    .repo-title {
+        font-size: 1.1rem;
+    }
+    
     .badges img {
         max-height: 35px;
     }
@@ -83,6 +97,14 @@ h1 {
         gap: 10px;
         flex-direction: column;
         align-items: flex-start;
+    }
+
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .repo-title {
+        font-size: 1rem;
     }
 
     .badges img {
