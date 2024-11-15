@@ -18,16 +18,17 @@ body {
     color: var(--Ammortal-Charcoal);
     display: flex;
     flex-direction: column;
-    min-height: 100vh;
+    min-height: 100vh; /* Ensures body takes the full height of the viewport */
 }
 
 .container {
     max-width: 900px;
     margin: 20px auto;
     padding: 0 20px;
-    flex: 1;
+    flex: 1; /* Pushes the footer to the bottom if content is short */
 }
 
+/* Footer Styling */
 footer {
     font-family: 'Roboto Mono', monospace;
     text-align: center;
@@ -57,65 +58,70 @@ h1 img {
     flex-shrink: 0;
 }
 
-/* Table Styling */
-.repo-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    background: var(--Ammortal-White);
-    border-radius: 5px;
-    
-    overflow: hidden;
-}
-
-.repo-table th, .repo-table td {
+.repo-section {
+    background: var(--Ammortal-Ash); 
+    border-radius: 8px;
+    margin-bottom: 20px;
     padding: 15px 20px;
-    text-align: left;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.5);
+}
+
+.repo-title {
     font-family: 'Montserrat', Arial, sans-serif;
-    font-size: 1rem;
-    color: var(--Ammortal-Ash);
-    border-bottom: 1px solid var(--Ammortal-Sand);
-}
-
-.repo-table th {
     font-weight: 600;
-    background-color: var(--Ammortal-Ash);
-    color: var(--Ammortal-Gray);
+    font-size: 1.25rem;
+    color: var(--Ammortal-Gray); 
+    margin-bottom: 10px;
 }
 
-.repo-table tr:last-child td {
-    border-bottom: none;
+.badges {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    flex-wrap: wrap;
 }
 
-.repo-table img {
+.badges img {
     max-height: 40px;
     width: auto;
     object-fit: contain; 
     flex-shrink: 0;
-    vertical-align: middle;
 }
 
-/* Responsive Adjustments */
+/* Media Queries for Layout Adjustments */
 @media (max-width: 768px) {
     h1 {
         font-size: 1.75rem;
     }
 
-    .repo-table th, .repo-table td {
-        padding: 10px 15px;
+    .repo-title {
+        font-size: 1.1rem;
     }
 
-    .repo-table img {
+    .badges img {
         max-height: 35px;
     }
 }
 
 @media (max-width: 480px) {
+    .badges {
+        gap: 10px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
     h1 {
         font-size: 1.5rem;
     }
 
-    .repo-table img {
+    .repo-title {
+        font-size: 1rem;
+    }
+
+    .badges img {
         max-height: 30px;
+        width: 100%;
+        max-width: 200px;
     }
 }
+
