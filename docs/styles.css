@@ -46,11 +46,12 @@ h1 {
 }
 
 .badges img {
-    max-height: 40px;
-    flex: 1 1 auto;
-    background-color: #78F7F2; 
-    border-radius: 4px;
+    max-height: 40px; /* Maintain a consistent height */
+    width: auto; /* Prevent horizontal stretching */
+    object-fit: contain; /* Ensure the image fits within the given height */
+    flex-shrink: 0; /* Prevent the image from shrinking in flex containers */
 }
+
 
 footer {
     text-align: center;
@@ -75,10 +76,9 @@ footer {
     }
 
     .badges img {
-        max-width: 150px; 
-        height: auto;     
-        flex: 0 0 auto;   
+        max-height: 30px;
+        width: 100%;
+        max-width: 200px;
     }
-    
 }
 
