@@ -1,8 +1,8 @@
 {
-    "repositories":
-    [
-        "chamber.a4.frontend",
-        "chamber.a4.backend",
-        "chamber.a4.assets"
-    ]
+  "repositories": [
+    "chamber.a4.frontend",
+    "chamber.a4.backend",
+    "chamber.a4.assets",
+    "chamber.a4.frontend.test-semrel"
+  ]
 }
