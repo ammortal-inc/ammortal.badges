@@ -22,8 +22,8 @@
                 <th>Current Version</th>
             </tr>
         </thead>
-        <tbody>
-            <!-- TABLE_ROWS -->
+        <tbody id="repo-table-body">
+            <!-- Rows will be populated dynamically -->
         </tbody>
     </table>
 </div>
@@ -31,6 +31,36 @@
 <footer>
     &copy; 2024 Ammortal Inc. All rights reserved.
 </footer>
+
+<script>
+    async function fetchRepos() {
+        try {
+            const response = await fetch('./repos.json');
+            const repos = await response.json();
+            const tableBody = document.getElementById('repo-table-body');
+            tableBody.innerHTML = ''; // Clear existing rows
+
+            repos.forEach(repo => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${repo}</td>
+                    <td>
+                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/badges/${repo}/build-status.svg" alt="Build Status">
+                    </td>
+                    <td>
+                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/badges/${repo}/prod-version.svg" alt="Current Version">
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        } catch (error) {
+            console.error('Error fetching repositories:', error);
+        }
+    }
+
+    // Fetch repositories when the page loads
+    window.onload = fetchRepos;
+</script>
 
 </body>
 </html>
