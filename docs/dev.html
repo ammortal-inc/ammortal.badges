@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ammortal Chamber Versions Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
 
 <h1>
-    <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/Ammortal-Mark-white.png" alt="Ammortal Logo">
-    Build Status & Versions For Developers
+    <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/assets/images/Ammortal-Mark-white.png" alt="Ammortal Logo">
+    Build Status & Versions
 </h1>
 
 <div class="container">
@@ -18,48 +18,14 @@
         <thead>
             <tr>
                 <th>Repository</th>
-                <th>Build Status</th>
-                <th>Current Prod Version</th>
-                <th>Current Main Version</th>
+                <th>Prod Build Status</th>
+                <th>Main Build Status</th>
+                <th>Prod Version</th>
+                <th>Main Version</th>
             </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>chamber.a4.frontend</td>
-                <td>
-                    <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/chamber.a4.frontend-build-status.svg" alt="Build Status">
-                </td>
-                <td>
-                    <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/chamber.a4.frontend-prod-version.svg" alt="Current Version">
-                </td>
-                <td>
-                    <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/chamber.a4.frontend-full-version.svg" alt="Current Version">
-                </td>
-            </tr>
-            <tr>
-                <td>chamber.a4.backend</td>
-                <td>
-                    <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/chamber.a4.backend-build-status.svg" alt="Build Status">
-                </td>
-                <td>
-                    <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/chamber.a4.backend-prod-version.svg" alt="Current Version">
-                </td>
-                <td>
-                    <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/chamber.a4.backend-full-version.svg" alt="Current Version">
-                </td>
-            </tr>
-            <tr>
-                <td>chamber.a4.assets</td>
-                <td>
-                    <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/chamber.a4.assets-build-status.svg" alt="Build Status">
-                </td>
-                <td>
-                    <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/chamber.a4.assets-prod-version.svg" alt="Current Version">
-                </td>
-                <td>
-                    <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/chamber.a4.assets-full-version.svg" alt="Current Version">
-                </td>
-            </tr>
+        <tbody id="repo-table-body">
+            <!-- Rows will be populated dynamically -->
         </tbody>
     </table>
 </div>
@@ -67,6 +33,52 @@
 <footer>
     &copy; 2024 Ammortal Inc. All rights reserved.
 </footer>
+
+<script>
+    async function fetchRepos() {
+        try {
+            const response = await fetch('./repos.json');
+            const data = await response.json();
+
+            // Ensure we are working with an array
+            const repos = Array.isArray(data) ? data : data.repositories || [];
+            if (!Array.isArray(repos)) {
+                console.error('Invalid JSON structure. Expected an array:', data);
+                return;
+            }
+
+            const tableBody = document.getElementById('repo-table-body');
+            tableBody.innerHTML = ''; // Clear existing rows
+
+            console.log(repos);
+            repos.forEach(repo => {
+                const row = document.createElement('tr');
+                
+                row.innerHTML = `
+                    <td>${repo}</td>
+                    <td>
+                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/prod-build-status.svg" alt="Prod Status">
+                    </td>
+                    <td>
+                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/main-build-status.svg" alt="Main Status">
+                    </td>
+                    <td>
+                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/prod-version.svg" alt="Prod Version">
+                    </td>
+                    <td>
+                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/main-version.svg" alt="Main Version">
+                    </td>
+                `;
+                tableBody.appendChild(row);
+            });
+        } catch (error) {
+            console.error('Error fetching repositories:', error);
+        }
+    }
+
+    // Fetch repositories when the page loads
+    window.onload = fetchRepos;
+</script>
 
 </body>
 </html>
