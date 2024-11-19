@@ -55,10 +55,14 @@
                 row.innerHTML = `
                     <td>${repo}</td>
                     <td>
-                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/prod-build-status.svg" alt="Build Status">
+                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/prod-build-status.svg" 
+                             alt="Build Status"
+                             onerror="this.parentElement.innerHTML='Unavailable'">
                     </td>
                     <td>
-                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/prod-version.svg" alt="Current Version">
+                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/prod-version.svg" 
+                             alt="Current Version"
+                             onerror="this.parentElement.innerHTML='Unavailable'">
                     </td>
                 `;
                 tableBody.appendChild(row);

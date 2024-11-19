@@ -57,16 +57,24 @@
                 row.innerHTML = `
                     <td>${repo}</td>
                     <td>
-                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/prod-build-status.svg" alt="Prod Status">
+                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/prod-build-status.svg" 
+                             alt="Prod Status"
+                             onerror="this.parentElement.innerHTML='Unavailable'">
                     </td>
                     <td>
-                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/main-build-status.svg" alt="Main Status">
+                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/main-build-status.svg" 
+                             alt="Main Status"
+                             onerror="this.parentElement.innerHTML='Unavailable'">
                     </td>
                     <td>
-                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/prod-version.svg" alt="Prod Version">
+                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/prod-version.svg" 
+                             alt="Prod Version"
+                             onerror="this.parentElement.innerHTML='Unavailable'">
                     </td>
                     <td>
-                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/main-version.svg" alt="Main Version">
+                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/main-version.svg" 
+                             alt="Main Version"
+                             onerror="this.parentElement.innerHTML='Unavailable'">
                     </td>
                 `;
                 tableBody.appendChild(row);

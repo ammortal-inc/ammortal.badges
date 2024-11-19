@@ -5,7 +5,7 @@
     --Ammortal-Ash: #7A756E;
     --Ammortal-Sand: #B6AE97;
     --Ammortal-Charcoal: #37332E;
-    --Ammorat-White: #F8F7F2; 
+    --Ammortal-White: #F8F7F2; 
     --Ammortal-Orange: #E7671A;     
 }
 
@@ -22,7 +22,7 @@ body {
 }
 
 .container {
-    max-width: 900px;
+    
     margin: 20px auto;
     padding: 0 20px;
     flex: 1;
@@ -90,7 +90,6 @@ h1 img {
 }
 
 .repo-table td:last-child img {
-    background-color: #E7671A;
     max-width: 1200%; 
 }
 
