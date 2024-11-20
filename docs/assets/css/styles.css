@@ -65,16 +65,15 @@ h1 img {
     margin: 20px 0;
     background: var(--Ammortal-White);
     border-radius: 5px;
-    overflow: hidden;
     object-fit: contain;
     white-space: nowrap;
 }
 
 .repo-table th, .repo-table td {
-    padding: 10px 15px;
+    padding: 5px 5px;
     text-align: left;
     font-family: 'Montserrat', Arial, sans-serif;
-    font-size: 1rem;
+    font-size: .75rem;
     color: var(--Ammortal-Ash);
     border-bottom: 1px solid var(--Ammortal-Sand);
     
@@ -88,10 +87,6 @@ h1 img {
 
 .repo-table tr:last-child td {
     border-bottom: none;
-}
-
-.repo-table td:last-child img {
-    max-width: 1200%; 
 }
 
 .repo-table img {
