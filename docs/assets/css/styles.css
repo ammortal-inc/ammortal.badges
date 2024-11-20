@@ -72,6 +72,7 @@ h1 img {
 .repo-table th, .repo-table td {
     padding: 5px 5px;
     text-align: left;
+    vertical-align: top;
     font-family: 'Montserrat', Arial, sans-serif;
     font-size: .75rem;
     color: var(--Ammortal-Ash);
@@ -94,6 +95,23 @@ h1 img {
     max-height: 40px;
     width: auto;
     vertical-align: middle;  
+}
+
+
+.prod-img,
+.main-img {
+    align-items: start;
+}
+
+.prod-img img,
+.main-img img {
+    display: block;       /* Ensures images are treated as block elements */
+    margin-bottom: 5px;  /* Adds spacing between images */
+}
+
+.prod-img img:last-child,
+.main-img img:last-child {
+    margin-bottom: 0;     /* Removes spacing after the last image */
 }
 
 /* Responsive Adjustments */
