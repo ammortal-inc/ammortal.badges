@@ -10,7 +10,7 @@
 
 <h1>
     <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/assets/images/Ammortal-Mark-white.png" alt="Ammortal Logo">
-    Build Status & Versions
+    Latest Semantic Versions
 </h1>
 
 <div class="container">
@@ -18,8 +18,8 @@
         <thead>
             <tr>
                 <th>Repository</th>
-                <th>Build Status</th>
-                <th>Current Version</th>
+                <th>Prod Version</th>
+                <th>Main Version</th>
             </tr>
         </thead>
         <tbody id="repo-table-body">
@@ -55,13 +55,13 @@
                 row.innerHTML = `
                     <td>${repo}</td>
                     <td>
-                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/prod-build-status.svg" 
-                             alt="Build Status"
+                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/prod-release.svg" 
+                             alt="Prod Version"
                              onerror="this.parentElement.innerHTML='Unavailable'">
                     </td>
                     <td>
-                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/prod-release.svg" 
-                             alt="Current Version"
+                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/main-release.svg" 
+                             alt="Main Version"
                              onerror="this.parentElement.innerHTML='Unavailable'">
                     </td>
                 `;

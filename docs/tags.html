@@ -10,7 +10,7 @@
 
 <h1>
     <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/assets/images/Ammortal-Mark-white.png" alt="Ammortal Logo">
-    Build Status & Versions
+    Latest Release Tags
 </h1>
 
 <div class="container">
@@ -20,8 +20,6 @@
                 <th>Repository</th>
                 <th>Prod Build Status</th>
                 <th>Main Build Status</th>
-                <th>Prod Version</th>
-                <th>Main Version</th>
             </tr>
         </thead>
         <tbody id="repo-table-body">
@@ -57,22 +55,12 @@
                 row.innerHTML = `
                     <td>${repo}</td>
                     <td>
-                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/prod-build-status.svg" 
-                             alt="Prod Status"
-                             onerror="this.parentElement.innerHTML='Unavailable'">
-                    </td>
-                    <td>
-                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/main-build-status.svg" 
-                             alt="Main Status"
-                             onerror="this.parentElement.innerHTML='Unavailable'">
-                    </td>
-                    <td>
-                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/prod-release.svg" 
+                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/prod-release-tag.svg" 
                              alt="Prod Version"
                              onerror="this.parentElement.innerHTML='Unavailable'">
                     </td>
                     <td>
-                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/main-release.svg" 
+                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/main-release-tag.svg" 
                              alt="Main Version"
                              onerror="this.parentElement.innerHTML='Unavailable'">
                     </td>
@@ -90,3 +78,5 @@
 
 </body>
 </html>
+
+
