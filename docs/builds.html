@@ -18,8 +18,8 @@
         <thead>
             <tr>
                 <th>Repository</th>
-                <th>Prod Build Status</th>
                 <th>Main Build Status</th>
+                <th>Prod Build Status</th>
             </tr>
         </thead>
         <tbody id="repo-table-body">
@@ -54,19 +54,19 @@
                 
                 row.innerHTML = `
                     <td>${repo}</td>
-                    <td class="prod-img">
-                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/build_prod_status.svg" 
-                             alt="Prod Build Status"
-                             onerror="this.parentElement.innerHTML='Unavailable'">
-                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/build_prod_version.svg" 
-                             alt="Main Build Status"
-                             onerror="this.parentElement.innerHTML='Unavailable'">
-                    </td>
                     <td class="main-img">
                         <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/build_main_status.svg" 
                              alt="Prod Build Status"
                              onerror="this.parentElement.innerHTML='Unavailable'">
                         <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/build_main_version.svg" 
+                             alt="Main Build Status"
+                             onerror="this.parentElement.innerHTML='Unavailable'">
+                    </td>
+                    <td class="prod-img">
+                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/build_prod_status.svg" 
+                             alt="Prod Build Status"
+                             onerror="this.parentElement.innerHTML='Unavailable'">
+                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/build_prod_version.svg" 
                              alt="Main Build Status"
                              onerror="this.parentElement.innerHTML='Unavailable'">
                     </td>
