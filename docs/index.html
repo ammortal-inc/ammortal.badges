@@ -54,14 +54,20 @@
                 
                 row.innerHTML = `
                     <td>${repo}</td>
-                    <td>
+                    <td class="prod-img">
+                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/semrel_main_release-tag.svg" 
+                             alt="Main Release Tag"
+                             onerror="this.parentElement.innerHTML='Unavailable'">
                         <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/semrel_main_semver-full.svg" 
-                             alt="Main Semver"
+                             alt="Main Semver Full"
                              onerror="this.parentElement.innerHTML='Unavailable'">
                     </td>
-                    <td>
+                    <td class="main-img">
+                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/semrel_prod_release-tag.svg" 
+                             alt="Prod Release Tag"
+                             onerror="this.parentElement.innerHTML='Unavailable'">
                         <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/semrel_prod_semver-full.svg" 
-                             alt="Prod Semver"
+                             alt="Prod Semver Full"
                              onerror="this.parentElement.innerHTML='Unavailable'">
                     </td>
                 `;
