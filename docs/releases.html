@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ammortal Chamber Versions Dashboard</title>
+    <title>Ammortal Chamber Release Tags</title>
     <link rel="stylesheet" href="assets/css/styles.css">
 </head>
 <body>
 
 <h1>
     <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/assets/images/Ammortal-Mark-white.png" alt="Ammortal Logo">
-    Latest Semantic Versions
+    Ammortal Chamber Software Releases
 </h1>
 
 <div class="container">
@@ -18,8 +18,7 @@
         <thead>
             <tr>
                 <th>Repository</th>
-                <th>Main Versions</th>
-                <th>Prod Versions</th>
+                <th>Latest Release</th>
             </tr>
         </thead>
         <tbody id="repo-table-body">
@@ -49,25 +48,17 @@
             tableBody.innerHTML = ''; // Clear existing rows
 
             console.log(repos);
-            repos.forEach(repo => {
+            repos
+            // Only show repos for A4 Chambers that have 3 dot-separated sections
+            .filter(repo => repo.startsWith('chamber.a4') && repo.split('.').length == 3)
+            .forEach(repo => {
                 const row = document.createElement('tr');
                 
                 row.innerHTML = `
                     <td>${repo}</td>
-                    <td class="prod-img">
-                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/semrel_main_release-tag.svg" 
-                             alt="Main Release Tag"
-                             onerror="this.parentElement.innerHTML='Unavailable'">
-                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/semrel_main_semver-full.svg" 
-                             alt="Main Semver Full"
-                             onerror="this.parentElement.innerHTML='Unavailable'">
-                    </td>
-                    <td class="main-img">
+                    <td>
                         <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/semrel_prod_release-tag.svg" 
                              alt="Prod Release Tag"
-                             onerror="this.parentElement.innerHTML='Unavailable'">
-                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/semrel_prod_semver-full.svg" 
-                             alt="Prod Semver Full"
                              onerror="this.parentElement.innerHTML='Unavailable'">
                     </td>
                 `;
