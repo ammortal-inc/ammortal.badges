@@ -53,7 +53,11 @@
                 const row = document.createElement('tr');
                 
                 row.innerHTML = `
-                    <td>${repo}</td>
+                    <td>
+                        <a href="https://github.com/ammortal-inc/${repo}" target="_blank">
+                            ${repo}
+                        </a>
+                    </td>
                     <td class="prod-img">
                         <a href="https://github.com/ammortal-inc/${repo}/tree/main" target="_blank">
                             <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/${repo}/build_main_status.svg" 
