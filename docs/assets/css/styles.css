@@ -104,13 +104,17 @@ h1 img {
 }
 
 .prod-img img,
-.main-img img {
+.prod-img a,
+.main-img img,
+.main-img a {
     display: block;       /* Ensures images are treated as block elements */
     margin-bottom: 5px;  /* Adds spacing between images */
 }
 
 .prod-img img:last-child,
-.main-img img:last-child {
+.prod-img a:last-child,
+.main-img img:last-child,
+.main-img a:last-child {
     margin-bottom: 0;     /* Removes spacing after the last image */
 }
 
