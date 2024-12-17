@@ -1,5 +1,6 @@
 {
   "repositories": [
-    "chamber.a4.frontend.test-semrel"
+    "chamber.a4.frontend.test-semrel",
+    "ammortal.workflows"
   ]
 }
