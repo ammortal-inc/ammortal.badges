@@ -49,7 +49,9 @@
             tableBody.innerHTML = ''; // Clear existing rows
 
             console.log(repos);
-            repos.forEach(repo => {
+            repos
+            .sort()
+            .forEach(repo => {
                 const row = document.createElement('tr');
                 
                 row.innerHTML = `

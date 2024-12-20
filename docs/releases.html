@@ -51,6 +51,7 @@
             repos
             // Only show repos for A4 Chambers that have 3 dot-separated sections
             .filter(repo => repo.startsWith('chamber.a4') && repo.split('.').length == 3)
+            .sort()
             .forEach(repo => {
                 const row = document.createElement('tr');
                 
