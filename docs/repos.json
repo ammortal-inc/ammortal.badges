@@ -1,6 +1,13 @@
 {
   "repositories": [
     "chamber.a4.frontend.test-semrel",
-    "ammortal.workflows"
+    "ammortal.workflows",
+    "chamber.a4.backend",
+    "chamber.a4.assets",
+    "chamber.a4.frontend",
+    "chamber.a4.blank",
+    "chamber.a4.provision",
+    "chamber.a4.compose",
+    "chamber.a0.provision"
   ]
 }
