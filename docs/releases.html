@@ -48,10 +48,11 @@
             tableBody.innerHTML = ''; // Clear existing rows
 
             console.log(repos);
-            repos
-            // Only show repos for A4 Chambers that have 3 dot-separated sections
-            .filter(repo => repo.startsWith('chamber.a4') && repo.split('.').length == 3)
-            .sort()
+            [
+                'chamber.a4.frontend',
+                'chamber.a4.backend',
+                'chamber.a4.assets'
+            ].filter(repo => repos.includes(repo))
             .forEach(repo => {
                 const row = document.createElement('tr');
                 
