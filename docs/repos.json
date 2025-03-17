@@ -9,6 +9,7 @@
     "chamber.a4.provision",
     "chamber.a4.compose",
     "chamber.a0.provision",
-    "chamber.a4.backend.test-semrel-changes"
+    "chamber.a4.backend.test-semrel-changes",
+    "test-semrel"
   ]
 }
