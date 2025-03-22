@@ -18,8 +18,9 @@
         <thead>
             <tr>
                 <th>Repository</th>
-                <th>Pre-Releases (main)</th>
-                <th>Releases (prod)</th>
+                <th>Alpha Releases (main)</th>
+                <th>Beta Releases (qa)</th>
+                <th>Stable Releases (prod)</th>
             </tr>
         </thead>
         <tbody id="repo-table-body">
@@ -33,6 +34,11 @@
 </footer>
 
 <script>
+    function getUrlParameter(name) {
+        const params = new URLSearchParams(window.location.search);
+        return params.get(name);
+    }
+
     async function fetchRepos() {
         try {
             const response = await fetch('./repos.json');
@@ -48,9 +54,12 @@
             const tableBody = document.getElementById('repo-table-body');
             tableBody.innerHTML = ''; // Clear existing rows
 
+            const filterRepo = getUrlParameter('repo');
+            
             console.log(repos);
             repos
             .sort()
+            .filter(repo => !filterRepo || repo.toLowerCase().includes(filterRepo.toLowerCase()))
             .forEach(repo => {
                 const row = document.createElement('tr');
                 
@@ -60,29 +69,42 @@
                             ${repo}
                         </a>
                     </td>
-                    <td class="prod-img">
+                    <td class="main-img">
                         <a href="https://github.com/ammortal-inc/${repo}/tree/main" target="_blank">
-                            <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/repos/${repo}/build_main_status.svg" 
+                            <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/build_main_status.svg" 
                                 alt="Main Build Status"
                                 onerror="this.parentElement.innerHTML='Unavailable'">
                         </a>
-                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/repos/${repo}/semrel_main_release-tag.svg" 
+                        <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/semrel_main_release-tag.svg" 
                              alt="Main Release Tag"
                              onerror="this.parentElement.innerHTML='Unavailable'">
-                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/repos/${repo}/semrel_main_semver-full.svg" 
+                        <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/semrel_main_semver-full.svg" 
                              alt="Main Semver Full"
                              onerror="this.parentElement.innerHTML='Unavailable'">
                     </td>
-                    <td class="main-img">
+                    <td class="qa-img">
+                        <a href="https://github.com/ammortal-inc/${repo}/tree/qa" target="_blank">
+                            <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/build_qa_status.svg" 
+                                alt="QA Build Status"
+                                onerror="this.parentElement.innerHTML='Unavailable'">
+                        </a>
+                        <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/semrel_qa_release-tag.svg" 
+                             alt="QA Release Tag"
+                             onerror="this.parentElement.innerHTML='Unavailable'">
+                        <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/semrel_qa_semver-full.svg" 
+                             alt="QA Semver Full"
+                             onerror="this.parentElement.innerHTML='Unavailable'">
+                    </td>
+                    <td class="prod-img">
                         <a href="https://github.com/ammortal-inc/${repo}/tree/prod" target="_blank">
-                            <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/repos/${repo}/build_prod_status.svg" 
+                            <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/build_prod_status.svg" 
                              alt="Prod Build Status"
                              onerror="this.parentElement.innerHTML='Unavailable'">
                         </a>
-                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/repos/${repo}/semrel_prod_release-tag.svg" 
+                        <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/semrel_prod_release-tag.svg" 
                              alt="Prod Release Tag"
                              onerror="this.parentElement.innerHTML='Unavailable'">
-                        <img src="https://github.com/ammortal-inc/ammortal.versions/raw/main/docs/repos/${repo}/semrel_prod_semver-full.svg" 
+                        <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/semrel_prod_semver-full.svg" 
                              alt="Prod Semver Full"
                              onerror="this.parentElement.innerHTML='Unavailable'">
                     </td>
