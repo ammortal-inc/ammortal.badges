@@ -13,6 +13,7 @@
     "test-semrel",
     "chamber.a5.actuator-mgr",
     "chamber.a5.compose",
-    "chamber.a5.assets"
+    "chamber.a5.assets",
+    "chamber.a5.plc-mgr"
   ]
 }
