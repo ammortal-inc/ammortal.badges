@@ -17,6 +17,7 @@
     "chamber.a5.plc-mgr",
     "chamber.a5.mqtt-broker",
     "chamber.a5.frontend",
-    "chamber.a5.ui-mgr"
+    "chamber.a5.ui-mgr",
+    "chamber.a5.provision"
   ]
 }
