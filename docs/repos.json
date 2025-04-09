@@ -1,6 +1,5 @@
 {
   "repositories": [
-    "chamber.a4.frontend.test-semrel",
     "ammortal.workflows",
     "chamber.a4.backend",
     "chamber.a4.assets",
@@ -9,8 +8,6 @@
     "chamber.a4.provision",
     "chamber.a4.compose",
     "chamber.a0.provision",
-    "chamber.a4.backend.test-semrel-changes",
-    "test-semrel",
     "chamber.a5.actuator-mgr",
     "chamber.a5.compose",
     "chamber.a5.assets",
