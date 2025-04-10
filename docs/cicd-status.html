@@ -99,10 +99,12 @@
             tableBody.innerHTML = ''; // Clear existing rows
 
             const filterRepo = getUrlParameter('repo');
-            
+            console.log(filterRepo)
+            const regexFilter = filterRepo ? new RegExp(filterRepo, 'i') : null;
+
             repos
             .sort()
-            .filter(repo => !filterRepo || repo.toLowerCase().includes(filterRepo.toLowerCase()))
+            .filter(repo => !regexFilter || regexFilter.test(repo))
             .forEach(repo => {
                 const row = document.createElement('tr');
                 
