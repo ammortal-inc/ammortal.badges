@@ -130,10 +130,10 @@ h1 img {
     white-space: nowrap;
 }
 
-.build-status {
+.build-status,
+.release-tag {
     display: flex;
     align-items: center; /* Align items vertically in the center */
-    margin: 0px;
 }
 
 .build-status a,
