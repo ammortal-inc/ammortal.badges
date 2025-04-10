@@ -71,11 +71,11 @@
                     </td>
                 `;
 
-                ['main','qa','prod'].map(branch => {
+                ['main', 'qa', 'prod'].map(branch => {
                     row.innerHTML += 
                     `
                     <td class="${branch}-img">
-                        <div>
+                        <div class="build-status">
                             <a href="https://github.com/ammortal-inc/${repo}/tree/${branch}" target="_blank">
                                 <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/build_${branch}_status.svg" 
                                     alt="${branch} build status"

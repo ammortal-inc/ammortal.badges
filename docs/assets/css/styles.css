@@ -123,6 +123,18 @@ h1 img {
     margin-bottom: 5px;  /* Ensures consistent spacing for the last image */
 }
 
+.timestamp {
+    margin-left: 7px; /* Space between the link and the timestamp */
+    font-size: 0.6rem;
+    color: var(--Ammortal-Ash);
+    white-space: nowrap;
+}
+
+.build-status {
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+}
+
 /* Responsive Adjustments */
 @media (max-width: 900px) {
     h1 {
