@@ -136,6 +136,11 @@ h1 img {
     margin: 0px;
 }
 
+.build-status a,
+.build-status img {
+    margin-bottom: 0; /* Remove any bottom margin */
+}
+
 /* Responsive Adjustments */
 @media (max-width: 900px) {
     h1 {
