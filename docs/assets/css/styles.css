@@ -111,7 +111,7 @@ h1 img {
 .qa-img img,
 .qa-img a {
     display: block;       /* Ensures images are treated as block elements */
-    margin-bottom: 5px;  /* Adds spacing between images */
+    margin-bottom: 5px;  /* Adjusted spacing between images */
 }
 
 .prod-img img:last-child,
@@ -120,7 +120,7 @@ h1 img {
 .main-img a:last-child,
 .qa-img img:last-child,
 .qa-img a:last-child {
-    margin-bottom: 0;     /* Removes spacing after the last image */
+    margin-bottom: 5px;  /* Ensures consistent spacing for the last image */
 }
 
 /* Responsive Adjustments */
