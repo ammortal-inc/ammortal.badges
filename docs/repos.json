@@ -17,6 +17,7 @@
     "chamber.a5.ui-mgr",
     "chamber.a5.provision",
     "chamber.a5.graphics-mgr",
-    "chamber.a5.column-hmi-mgr"
+    "chamber.a5.column-hmi-mgr",
+    "chamber.a5.session-mgr"
   ]
 }
