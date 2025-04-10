@@ -22,6 +22,7 @@
     "test-semrel",
     "chamber.actuator-mgr",
     "chamber.assets",
-    "chamber.column-hmi-mgr"
+    "chamber.column-hmi-mgr",
+    "chamber.graphics-mgr"
   ]
 }
