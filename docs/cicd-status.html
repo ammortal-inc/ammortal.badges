@@ -69,64 +69,32 @@
                             ${repo}
                         </a>
                     </td>
-                    <td class="main-img">
-                        <div>
-                            <a href="https://github.com/ammortal-inc/${repo}/tree/main" target="_blank">
-                                <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/build_main_status.svg" 
-                                    alt="Main Build Status"
-                                    onerror="this.parentElement.innerHTML='N/A'">
-                            </a>
-                        </div>
-                        <div>
-                            <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/semrel_main_release-tag.svg" 
-                                 alt="Main Release Tag"
-                                 onerror="this.remove()">
-                        </div>
-                        <div>
-                            <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/semrel_main_semver-full.svg" 
-                                 alt="Main Semver Full"
-                                 onerror="this.remove()">
-                        </div>
-                    </td>
-                    <td class="qa-img">
-                        <div>
-                            <a href="https://github.com/ammortal-inc/${repo}/tree/qa" target="_blank">
-                                <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/build_qa_status.svg" 
-                                    alt="QA Build Status"
-                                    onerror="this.parentElement.innerHTML='N/A'">
-                            </a>
-                        </div>
-                        <div>
-                            <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/semrel_qa_release-tag.svg" 
-                                 alt="QA Release Tag"
-                                 onerror="this.remove()">
-                        </div>
-                        <div>
-                            <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/semrel_qa_semver-full.svg" 
-                                 alt="QA Semver Full"
-                                 onerror="this.remove()">
-                        </div>
-                    </td>
-                    <td class="prod-img">
-                        <div>
-                            <a href="https://github.com/ammortal-inc/${repo}/tree/prod" target="_blank">
-                                <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/build_prod_status.svg" 
-                                    alt="Prod Build Status"
-                                    onerror="this.parentElement.innerHTML='N/A'">
-                            </a>    
-                        </div>
-                        <div>
-                            <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/semrel_prod_release-tag.svg" 
-                                 alt="Prod Release Tag"
-                                 onerror="this.remove()">
-                        </div>
-                        <div>
-                            <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/semrel_prod_semver-full.svg" 
-                                 alt="Prod Semver Full"
-                                 onerror="this.remove()">
-                        </div>
-                    </td>
                 `;
+
+                ['main','qa','prod'].map(branch => {
+                    row.innerHTML += 
+                    `
+                    <td class="${branch}-img">
+                        <div>
+                            <a href="https://github.com/ammortal-inc/${repo}/tree/${branch}" target="_blank">
+                                <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/build_${branch}_status.svg" 
+                                    alt="${branch} build status"
+                                    onerror="this.parentElement.innerHTML='N/A'">
+                            </a>
+                        </div>
+                        <div>
+                            <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/semrel_${branch}_release-tag.svg" 
+                                 alt="${branch} release tag"
+                                 onerror="this.remove()">
+                        </div>
+                        <div>
+                            <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/semrel_${branch}_semver-full.svg" 
+                                 alt="${branch} semver full"
+                                 onerror="this.remove()">
+                        </div>
+                    </td>`;
+                });
+
                 tableBody.appendChild(row);
             });
         } catch (error) {
