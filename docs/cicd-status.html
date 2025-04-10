@@ -71,7 +71,7 @@
                     </td>
                 `;
 
-                ['main', 'qa', 'prod'].map(branch => {
+                ['main', 'qa', 'prod'].forEach(branch => {
                     row.innerHTML += 
                     `
                     <td class="${branch}-img">
@@ -81,7 +81,7 @@
                                     alt="${branch} build status"
                                     onerror="this.parentElement.innerHTML='N/A'">
                             </a>
-                            <div class="timestamp">2 hours ago</div>
+                            <div class="timestamp" data-branch="${branch}" data-repo="${repo}">Loading...</div>
                         </div>
                         <div class="release-tag">
                             <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/semrel_${branch}_release-tag.svg" 
@@ -98,6 +98,16 @@
 
                 tableBody.appendChild(row);
             });
+
+            // Fetch timestamps asynchronously after rows are added
+            const timestamps = document.querySelectorAll('.timestamp');
+            timestamps.forEach(async (timestamp) => {
+                const branch = timestamp.getAttribute('data-branch');
+                const repo = timestamp.getAttribute('data-repo');
+                const createdDate = await fetchSvgCreatedDate(`https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/build_${branch}_status.svg`);
+                timestamp.textContent = createdDate || '';
+            });
+
         } catch (error) {
             console.error('Error fetching repositories:', error);
         }
