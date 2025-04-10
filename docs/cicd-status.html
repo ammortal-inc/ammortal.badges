@@ -39,6 +39,50 @@
         return params.get(name);
     }
 
+    /**
+     * Calculates the time difference between the current time and a given date.
+     * @param {string} createdDate - The created date in ISO format.
+     * @returns {string} - A human-readable time difference (e.g., "2 hours ago").
+     */
+    function calculateTimeSince(createdDate) {
+        const createdTime = new Date(createdDate).getTime();
+        const now = Date.now();
+        const diffInSeconds = Math.floor((now - createdTime) / 1000);
+
+        if (diffInSeconds < 60) {
+            return `${diffInSeconds} sec ago`;
+        } else if (diffInSeconds < 3600) {
+            const minutes = Math.floor(diffInSeconds / 60);
+            return `${minutes} min ago`;
+        } else if (diffInSeconds < 86400) {
+            const hours = Math.floor(diffInSeconds / 3600);
+            return `${hours} hr${hours > 1 ? 's' : ''} ago`;
+        } else {
+            const days = Math.floor(diffInSeconds / 86400);
+            return `${days} day${days > 1 ? 's' : ''} ago`;
+        }
+    }
+
+    /**
+     * Checks the build status from the SVG content.
+     * @param {string} svgText - The SVG content as a string.
+     * @returns {string} - The build status (e.g., "success", "failed").
+     */
+    function getBuildStatusFromSvg(svgText) {
+        const parser = new DOMParser();
+        const svgDoc = parser.parseFromString(svgText, "image/svg+xml");
+        const titleElement = svgDoc.querySelector("title");
+        if (titleElement) {
+            const titleText = titleElement.textContent.toLowerCase();
+            if (titleText.includes("success")) {
+                return "success";
+            } else if (titleText.includes("failure")) {
+                return "failure";
+            }
+        }
+        return "unknown";
+    }
+
     async function fetchRepos() {
         try {
             const response = await fetch('./repos.json');
@@ -56,7 +100,6 @@
 
             const filterRepo = getUrlParameter('repo');
             
-            console.log(repos);
             repos
             .sort()
             .filter(repo => !filterRepo || repo.toLowerCase().includes(filterRepo.toLowerCase()))
@@ -69,51 +112,82 @@
                             ${repo}
                         </a>
                     </td>
-                    <td class="main-img">
-                        <a href="https://github.com/ammortal-inc/${repo}/tree/main" target="_blank">
-                            <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/build_main_status.svg" 
-                                alt="Main Build Status"
-                                onerror="this.parentElement.innerHTML='Unavailable'">
-                        </a>
-                        <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/semrel_main_release-tag.svg" 
-                             alt="Main Release Tag"
-                             onerror="this.parentElement.innerHTML='Unavailable'">
-                        <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/semrel_main_semver-full.svg" 
-                             alt="Main Semver Full"
-                             onerror="this.parentElement.innerHTML='Unavailable'">
-                    </td>
-                    <td class="qa-img">
-                        <a href="https://github.com/ammortal-inc/${repo}/tree/qa" target="_blank">
-                            <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/build_qa_status.svg" 
-                                alt="QA Build Status"
-                                onerror="this.parentElement.innerHTML='Unavailable'">
-                        </a>
-                        <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/semrel_qa_release-tag.svg" 
-                             alt="QA Release Tag"
-                             onerror="this.parentElement.innerHTML='Unavailable'">
-                        <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/semrel_qa_semver-full.svg" 
-                             alt="QA Semver Full"
-                             onerror="this.parentElement.innerHTML='Unavailable'">
-                    </td>
-                    <td class="prod-img">
-                        <a href="https://github.com/ammortal-inc/${repo}/tree/prod" target="_blank">
-                            <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/build_prod_status.svg" 
-                             alt="Prod Build Status"
-                             onerror="this.parentElement.innerHTML='Unavailable'">
-                        </a>
-                        <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/semrel_prod_release-tag.svg" 
-                             alt="Prod Release Tag"
-                             onerror="this.parentElement.innerHTML='Unavailable'">
-                        <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/semrel_prod_semver-full.svg" 
-                             alt="Prod Semver Full"
-                             onerror="this.parentElement.innerHTML='Unavailable'">
-                    </td>
                 `;
+
+                ['main', 'qa', 'prod'].forEach(branch => {
+                    row.innerHTML += 
+                    `
+                    <td class="${branch}-img">
+                        <div class="build-status">
+                            <a href="https://github.com/ammortal-inc/${repo}/tree/${branch}" target="_blank">
+                                <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/build_${branch}_status.svg" 
+                                    alt="${branch} build status"
+                                    onerror="this.parentElement.innerHTML='N/A'">
+                            </a>
+                            <div class="timestamp" url="https://raw.githubusercontent.com/ammortal-inc/ammortal.badges/main/docs/repos/${repo}/build_${branch}_status.svg">Loading...</div>
+                        </div>
+                        <div class="release-tag">
+                            <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/semrel_${branch}_release-tag.svg" 
+                                 alt="${branch} release tag"
+                                 onerror="this.remove()">
+                            <div class="timestamp" url="https://raw.githubusercontent.com/ammortal-inc/ammortal.badges/main/docs/repos/${repo}/semrel_${branch}_release-tag.svg">Loading...</div>
+                        </div>
+                        <div class="semver-full">
+                            <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/semrel_${branch}_semver-full.svg" 
+                                 alt="${branch} semver full"
+                                 onerror="this.remove()">
+                        </div>
+                    </td>`;
+                });
+
                 tableBody.appendChild(row);
             });
+
+            // Fetch timestamps and build statuses asynchronously after rows are added
+            const timestamps = document.querySelectorAll('.timestamp');
+            timestamps.forEach(async (timestamp) => {
+                const url = timestamp.getAttribute('url');
+                const response = await fetch(url);
+                if (response.ok) {
+                    const svgText = await response.text();
+                    const createdDate = fetchSvgCreatedDateFromText(svgText); // Use the new function
+                    const buildStatus = getBuildStatusFromSvg(svgText);
+
+                    // Set the time since createdDate
+                    if (createdDate) {
+                        timestamp.textContent = calculateTimeSince(createdDate);
+                    } else {
+                        timestamp.textContent = '';
+                    }
+
+                    // Change cell color based on build status
+                    const cell = timestamp.closest('td');
+                    if (buildStatus === "failure") {
+                        cell.style.backgroundColor = "#f99"; // Light red for failed builds
+                    } else if (buildStatus === "success") {
+                        cell.style.backgroundColor = "#dfd"; // Light green for successful builds
+                    }
+                } else {
+                    // console.error(`Failed to fetch SVG from ${url}`);
+                    timestamp.textContent = '';
+                }
+            });
+
         } catch (error) {
             console.error('Error fetching repositories:', error);
         }
+    }
+
+    /**
+     * Extracts the metadata.createdDate element from the SVG text.
+     * @param {string} svgText - The SVG content as a string.
+     * @returns {string|null} - The createdDate value or null if not found.
+     */
+    function fetchSvgCreatedDateFromText(svgText) {
+        const parser = new DOMParser();
+        const svgDoc = parser.parseFromString(svgText, "image/svg+xml");
+        const createdDateElement = svgDoc.querySelector("metadata > createdDate");
+        return createdDateElement ? createdDateElement.textContent : null;
     }
 
     // Fetch repositories when the page loads

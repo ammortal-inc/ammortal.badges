@@ -111,7 +111,7 @@ h1 img {
 .qa-img img,
 .qa-img a {
     display: block;       /* Ensures images are treated as block elements */
-    margin-bottom: 5px;  /* Adds spacing between images */
+    margin-bottom: 5px;  /* Adjusted spacing between images */
 }
 
 .prod-img img:last-child,
@@ -120,7 +120,25 @@ h1 img {
 .main-img a:last-child,
 .qa-img img:last-child,
 .qa-img a:last-child {
-    margin-bottom: 0;     /* Removes spacing after the last image */
+    margin-bottom: 5px;  /* Ensures consistent spacing for the last image */
+}
+
+.timestamp {
+    margin-left: 0.5rem; /* Space between the link and the timestamp */
+    font-size: 0.7rem;
+    color: var(--Ammortal-Ash);
+    white-space: nowrap;
+}
+
+.build-status,
+.release-tag {
+    display: flex;
+    align-items: center; /* Align items vertically in the center */
+}
+
+.build-status a,
+.build-status img {
+    margin-bottom: 0; /* Remove any bottom margin */
 }
 
 /* Responsive Adjustments */
