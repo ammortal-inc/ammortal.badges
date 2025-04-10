@@ -81,12 +81,13 @@
                                     alt="${branch} build status"
                                     onerror="this.parentElement.innerHTML='N/A'">
                             </a>
-                            <div class="timestamp" data-branch="${branch}" data-repo="${repo}">Loading...</div>
+                            <div class="timestamp" url="https://raw.githubusercontent.com/ammortal-inc/ammortal.badges/main/docs/repos/${repo}/build_${branch}_status.svg">Loading...</div>
                         </div>
                         <div class="release-tag">
                             <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/semrel_${branch}_release-tag.svg" 
                                  alt="${branch} release tag"
                                  onerror="this.remove()">
+                            <div class="timestamp" url="https://raw.githubusercontent.com/ammortal-inc/ammortal.badges/main/docs/repos/${repo}/semrel_${branch}_release-tag.svg">Loading...</div>
                         </div>
                         <div class="semver-full">
                             <img src="https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/semrel_${branch}_semver-full.svg" 
@@ -102,9 +103,8 @@
             // Fetch timestamps asynchronously after rows are added
             const timestamps = document.querySelectorAll('.timestamp');
             timestamps.forEach(async (timestamp) => {
-                const branch = timestamp.getAttribute('data-branch');
-                const repo = timestamp.getAttribute('data-repo');
-                const createdDate = await fetchSvgCreatedDate(`https://github.com/ammortal-inc/ammortal.badges/raw/main/docs/repos/${repo}/build_${branch}_status.svg`);
+                const url = timestamp.getAttribute('url');
+                const createdDate = await fetchSvgCreatedDate(url);
                 timestamp.textContent = createdDate || '';
             });
 
