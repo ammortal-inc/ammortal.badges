@@ -19,6 +19,7 @@
     "chamber.a5.graphics-mgr",
     "chamber.a5.column-hmi-mgr",
     "chamber.a5.session-mgr",
-    "test-semrel"
+    "test-semrel",
+    "chamber.actuator-mgr"
   ]
 }
