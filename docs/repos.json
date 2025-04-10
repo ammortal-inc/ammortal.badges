@@ -23,6 +23,7 @@
     "chamber.actuator-mgr",
     "chamber.assets",
     "chamber.column-hmi-mgr",
-    "chamber.graphics-mgr"
+    "chamber.graphics-mgr",
+    "chamber.plc-mgr"
   ]
 }
