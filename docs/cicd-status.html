@@ -39,6 +39,30 @@
         return params.get(name);
     }
 
+    /**
+     * Calculates the time difference between the current time and a given date.
+     * @param {string} createdDate - The created date in ISO format.
+     * @returns {string} - A human-readable time difference (e.g., "2 hours ago").
+     */
+    function calculateTimeSince(createdDate) {
+        const createdTime = new Date(createdDate).getTime();
+        const now = Date.now();
+        const diffInSeconds = Math.floor((now - createdTime) / 1000);
+
+        if (diffInSeconds < 60) {
+            return `${diffInSeconds} sec ago`;
+        } else if (diffInSeconds < 3600) {
+            const minutes = Math.floor(diffInSeconds / 60);
+            return `${minutes} min ago`;
+        } else if (diffInSeconds < 86400) {
+            const hours = Math.floor(diffInSeconds / 3600);
+            return `${hours} hr${hours > 1 ? 's' : ''} ago`;
+        } else {
+            const days = Math.floor(diffInSeconds / 86400);
+            return `${days} day${days > 1 ? 's' : ''} ago`;
+        }
+    }
+
     async function fetchRepos() {
         try {
             const response = await fetch('./repos.json');
@@ -105,7 +129,11 @@
             timestamps.forEach(async (timestamp) => {
                 const url = timestamp.getAttribute('url');
                 const createdDate = await fetchSvgCreatedDate(url);
-                timestamp.textContent = createdDate || '';
+                if (createdDate) {
+                    timestamp.textContent = calculateTimeSince(createdDate);
+                } else {
+                    timestamp.textContent = '';
+                }
             });
 
         } catch (error) {
