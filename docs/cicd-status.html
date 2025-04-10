@@ -63,6 +63,26 @@
         }
     }
 
+    /**
+     * Checks the build status from the SVG content.
+     * @param {string} svgText - The SVG content as a string.
+     * @returns {string} - The build status (e.g., "success", "failed").
+     */
+    function getBuildStatusFromSvg(svgText) {
+        const parser = new DOMParser();
+        const svgDoc = parser.parseFromString(svgText, "image/svg+xml");
+        const titleElement = svgDoc.querySelector("title");
+        if (titleElement) {
+            const titleText = titleElement.textContent.toLowerCase();
+            if (titleText.includes("success")) {
+                return "success";
+            } else if (titleText.includes("failure")) {
+                return "failure";
+            }
+        }
+        return "unknown";
+    }
+
     async function fetchRepos() {
         try {
             const response = await fetch('./repos.json');
@@ -80,7 +100,6 @@
 
             const filterRepo = getUrlParameter('repo');
             
-            console.log(repos);
             repos
             .sort()
             .filter(repo => !filterRepo || repo.toLowerCase().includes(filterRepo.toLowerCase()))
@@ -124,14 +143,32 @@
                 tableBody.appendChild(row);
             });
 
-            // Fetch timestamps asynchronously after rows are added
+            // Fetch timestamps and build statuses asynchronously after rows are added
             const timestamps = document.querySelectorAll('.timestamp');
             timestamps.forEach(async (timestamp) => {
                 const url = timestamp.getAttribute('url');
-                const createdDate = await fetchSvgCreatedDate(url);
-                if (createdDate) {
-                    timestamp.textContent = calculateTimeSince(createdDate);
+                const response = await fetch(url);
+                if (response.ok) {
+                    const svgText = await response.text();
+                    const createdDate = fetchSvgCreatedDateFromText(svgText); // Use the new function
+                    const buildStatus = getBuildStatusFromSvg(svgText);
+
+                    // Set the time since createdDate
+                    if (createdDate) {
+                        timestamp.textContent = calculateTimeSince(createdDate);
+                    } else {
+                        timestamp.textContent = '';
+                    }
+
+                    // Change cell color based on build status
+                    const cell = timestamp.closest('td');
+                    if (buildStatus === "failure") {
+                        cell.style.backgroundColor = "#f99"; // Light red for failed builds
+                    } else if (buildStatus === "success") {
+                        cell.style.backgroundColor = "#dfd"; // Light green for successful builds
+                    }
                 } else {
+                    // console.error(`Failed to fetch SVG from ${url}`);
                     timestamp.textContent = '';
                 }
             });
@@ -142,26 +179,15 @@
     }
 
     /**
-     * Fetches an SVG from a given URL and extracts the metadata.createdDate element.
-     * @param {string} url - The URL of the SVG file.
-     * @returns {Promise<string|null>} - The createdDate value or null if not found.
+     * Extracts the metadata.createdDate element from the SVG text.
+     * @param {string} svgText - The SVG content as a string.
+     * @returns {string|null} - The createdDate value or null if not found.
      */
-    async function fetchSvgCreatedDate(url) {
-        try {
-            const response = await fetch(url);
-            if (!response.ok) {
-                console.error(`Failed to fetch SVG from ${url}:`, response.statusText);
-                return null;
-            }
-            const svgText = await response.text();
-            const parser = new DOMParser();
-            const svgDoc = parser.parseFromString(svgText, "image/svg+xml");
-            const createdDateElement = svgDoc.querySelector("metadata > createdDate");
-            return createdDateElement ? createdDateElement.textContent : null;
-        } catch (error) {
-            console.error(`Error fetching or parsing SVG from ${url}:`, error);
-            return null;
-        }
+    function fetchSvgCreatedDateFromText(svgText) {
+        const parser = new DOMParser();
+        const svgDoc = parser.parseFromString(svgText, "image/svg+xml");
+        const createdDateElement = svgDoc.querySelector("metadata > createdDate");
+        return createdDateElement ? createdDateElement.textContent : null;
     }
 
     // Fetch repositories when the page loads
