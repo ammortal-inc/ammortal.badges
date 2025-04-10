@@ -134,6 +134,29 @@
         }
     }
 
+    /**
+     * Fetches an SVG from a given URL and extracts the metadata.createdDate element.
+     * @param {string} url - The URL of the SVG file.
+     * @returns {Promise<string|null>} - The createdDate value or null if not found.
+     */
+    async function fetchSvgCreatedDate(url) {
+        try {
+            const response = await fetch(url);
+            if (!response.ok) {
+                console.error(`Failed to fetch SVG from ${url}:`, response.statusText);
+                return null;
+            }
+            const svgText = await response.text();
+            const parser = new DOMParser();
+            const svgDoc = parser.parseFromString(svgText, "image/svg+xml");
+            const createdDateElement = svgDoc.querySelector("metadata > createdDate");
+            return createdDateElement ? createdDateElement.textContent : null;
+        } catch (error) {
+            console.error(`Error fetching or parsing SVG from ${url}:`, error);
+            return null;
+        }
+    }
+
     // Fetch repositories when the page loads
     window.onload = fetchRepos;
 </script>
