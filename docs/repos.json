@@ -21,6 +21,7 @@
     "chamber.a5.session-mgr",
     "test-semrel",
     "chamber.actuator-mgr",
-    "chamber.assets"
+    "chamber.assets",
+    "chamber.column-hmi-mgr"
   ]
 }
