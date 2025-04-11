@@ -29,6 +29,7 @@
     "chamber.audio-mgr",
     "chamber.frontend",
     "chamber.mqtt-broker",
-    "chamber.plc-code"
+    "chamber.plc-code",
+    "chamber.session-mgr"
   ]
 }
