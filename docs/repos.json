@@ -33,6 +33,7 @@
     "chamber.session-mgr",
     "chamber.ui-mgr",
     "chamber.2-alpha.compose",
-    "chamber.compose"
+    "chamber.compose",
+    "chamber.provision"
   ]
 }
