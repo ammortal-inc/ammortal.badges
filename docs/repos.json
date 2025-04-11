@@ -31,6 +31,7 @@
     "chamber.mqtt-broker",
     "chamber.plc-code",
     "chamber.session-mgr",
-    "chamber.ui-mgr"
+    "chamber.ui-mgr",
+    "chamber.2-alpha.compose"
   ]
 }
