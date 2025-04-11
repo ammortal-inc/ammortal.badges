@@ -25,6 +25,7 @@
     "chamber.column-hmi-mgr",
     "chamber.graphics-mgr",
     "chamber.plc-mgr",
-    "chamber.go-service-lib"
+    "chamber.go-service-lib",
+    "chamber.audio-mgr"
   ]
 }
