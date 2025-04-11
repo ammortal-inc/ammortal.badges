@@ -28,6 +28,7 @@
     "chamber.go-service-lib",
     "chamber.audio-mgr",
     "chamber.frontend",
-    "chamber.mqtt-broker"
+    "chamber.mqtt-broker",
+    "chamber.plc-code"
   ]
 }
