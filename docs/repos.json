@@ -32,6 +32,7 @@
     "chamber.plc-code",
     "chamber.session-mgr",
     "chamber.ui-mgr",
-    "chamber.2-alpha.compose"
+    "chamber.2-alpha.compose",
+    "chamber.compose"
   ]
 }
