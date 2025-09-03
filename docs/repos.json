@@ -35,6 +35,7 @@
     "chamber.2-alpha.compose",
     "chamber.compose",
     "chamber.provision",
-    "chamber.prefs-mgr"
+    "chamber.prefs-mgr",
+    "chamber.preseed"
   ]
 }
