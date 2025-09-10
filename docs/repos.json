@@ -36,6 +36,7 @@
     "chamber.compose",
     "chamber.provision",
     "chamber.prefs-mgr",
-    "chamber.preseed"
+    "chamber.preseed",
+    "ammortal.linear-summary"
   ]
 }
