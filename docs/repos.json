@@ -37,6 +37,7 @@
     "chamber.provision",
     "chamber.prefs-mgr",
     "chamber.preseed",
-    "ammortal.linear-summary"
+    "ammortal.linear-summary",
+    "chamber.firmware-assets"
   ]
 }
