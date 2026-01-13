@@ -39,6 +39,7 @@
     "chamber.preseed",
     "ammortal.linear-summary",
     "chamber.firmware-assets",
-    "chamber.firmware-server"
+    "chamber.firmware-server",
+    "chamber-test.testing"
   ]
 }
