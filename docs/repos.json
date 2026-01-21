@@ -27,6 +27,7 @@
     "ammortal.linear-summary",
     "chamber.firmware-assets",
     "chamber.firmware-server",
-    "chamber.io-node-mgr"
+    "chamber.io-node-mgr",
+    "mender-update-module"
   ]
 }
