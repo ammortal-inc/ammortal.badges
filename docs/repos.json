@@ -28,6 +28,7 @@
     "chamber.firmware-assets",
     "chamber.firmware-server",
     "chamber.io-node-mgr",
-    "mender-update-module"
+    "mender-update-module",
+    "ammortal.docker-template"
   ]
 }
