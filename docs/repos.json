@@ -30,6 +30,7 @@
     "chamber.io-node-mgr",
     "mender-update-module",
     "ammortal.docker-template",
-    "testing"
+    "testing",
+    "chamber.mender-update-module"
   ]
 }
