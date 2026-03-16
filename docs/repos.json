@@ -31,6 +31,7 @@
     "mender-update-module",
     "ammortal.docker-template",
     "testing",
-    "chamber.mender-update-module"
+    "chamber.mender-update-module",
+    "chamber.hmi-mgr"
   ]
 }
