@@ -33,6 +33,7 @@
     "testing",
     "chamber.mender-update-module",
     "chamber.hmi-mgr",
-    "ammortal.provisioning-api"
+    "ammortal.provisioning-api",
+    "chamber.telemetry"
   ]
 }
