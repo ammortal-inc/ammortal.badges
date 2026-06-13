@@ -34,6 +34,7 @@
     "chamber.mender-update-module",
     "chamber.hmi-mgr",
     "ammortal.provisioning-api",
-    "chamber.telemetry"
+    "chamber.telemetry",
+    "chamber.network-mgr"
   ]
 }
