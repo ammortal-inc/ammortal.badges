@@ -35,6 +35,7 @@
     "chamber.hmi-mgr",
     "ammortal.provisioning-api",
     "chamber.telemetry",
-    "chamber.network-mgr"
+    "chamber.network-mgr",
+    "chamber.experience-studio"
   ]
 }
